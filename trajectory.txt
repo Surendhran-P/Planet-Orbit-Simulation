@@ -1,0 +1,9 @@
+NUM_BODIES
+2
+
+NUM_STEPS
+365
+
+NAMES
+Sun
+Earth
