@@ -6,6 +6,7 @@ class PlotTraj:
         self.data = self.data.split('\n\n')
         self.masses = []
         self.names = []
+        self.radii = []
         self.trajectories = []
         sub_trajectories = []
         
@@ -22,10 +23,12 @@ class PlotTraj:
             if part[0] == 'NAMES':
                 for i in range(self.num_bodies):
                     self.names.append(part[i+1])
+            if part[0] == 'RADII':
+                for i in range(self.num_bodies):
+                    self.radii.append(part[i+1])
             if part[0] == 'TRAJECTORIES':
                 for i in range(self.num_steps):
-                    for j in range(2):
-                        sub_trajectories.append(part[j])
+                    sub_trajectories = part[i+1].split(' ')
                     self.trajectories.append(sub_trajectories)
 
     def _update(self, frame):
