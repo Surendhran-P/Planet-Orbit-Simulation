@@ -29,7 +29,15 @@ class PlotTraj:
             if part[0] == 'TRAJECTORIES':
                 for i in range(self.num_steps):
                     sub_trajectories = part[i+1].split(' ')
-                    self.trajectories.append(sub_trajectories)
+                    #self.trajectories.append(sub_trajectories)
+                    sub_trajectories.pop(0)
+                    x = sub_trajectories[::2]
+                    y = sub_trajectories[1::2]
+                    self.trajectories.append(list(zip(x,y)))
+
+                #outputs the trajectories in 3d array format:
+                #    1:  [(x1, y1), (x2, y2),..(xn, yn)]
+                #    2:  [(x1, y1), (x2, y2),..(xn, yn)]
 
     def _update(self, frame):
         pass
